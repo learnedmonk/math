@@ -9,31 +9,36 @@
     tools:context=".MainActivity$DummySectionFragment" >
 
     <Button
-        android:id="@+id/Button02"
+        android:id="@+id/quiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Button01"
-        android:layout_below="@+id/Button01"
-        android:layout_marginTop="80dp"
-        android:text="Button" />
+         android:layout_alignParentTop="true"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="40dp"
+        android:onClick="quiz"
+        android:text="Quiz" />
+   
 
     <Button
         android:id="@+id/Button01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/learn"
-        android:layout_below="@+id/learn"
+        android:layout_alignLeft="@+id/quiz"
+        android:layout_below="@+id/quiz"
         android:layout_marginTop="85dp"
         android:text="Button" />
+    
+     
 
-    <Button
-        android:id="@+id/learn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp"
-       	android:onClick="onClick"
-        android:text="Learn" />
+     <Button
+         android:id="@+id/learn"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+        
+         android:layout_alignLeft="@+id/Button01"
+        android:layout_below="@+id/Button01"
+        android:layout_marginTop="80dp"
+         android:onClick="onClick"
+         android:text="Learn" />
 
 </RelativeLayout>
