@@ -1,15 +1,16 @@
 package com.learnedmonk.math.activity;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBar.Tab;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -18,7 +19,7 @@ import android.widget.ListView;
 import com.learnedmonk.math.R;
 import com.learnedmonk.math.db.DB;
 
-public class TablesActivity extends FragmentActivity implements
+public class TablesActivity extends ActionBarActivity implements
 		ActionBar.TabListener {
 
 	/**
@@ -40,10 +41,9 @@ public class TablesActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		db = new DB(getBaseContext());
 		setContentView(R.layout.pagerview_layout);
-	//	setTheme(R.style.TitleBar);
-		final ActionBar actionBar = getActionBar();
+		final ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS );
-
+		
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
@@ -67,6 +67,7 @@ public class TablesActivity extends FragmentActivity implements
 				});
 
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
+			
 			actionBar.addTab(actionBar.newTab()
 				.setText(mSectionsPagerAdapter.getPageTitle(i))
 				.setTabListener(this));
@@ -76,28 +77,8 @@ public class TablesActivity extends FragmentActivity implements
 	}
 
 
-	@Override
-	public void onTabSelected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
-		// When the given tab is selected, switch to the corresponding page in
-		// the ViewPager.
-		mViewPager.setCurrentItem(tab.getPosition());
-	}
-
-	@Override
-	public void onTabUnselected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
-	}
-
-	@Override
-	public void onTabReselected(ActionBar.Tab tab,
-			FragmentTransaction fragmentTransaction) {
-	}
-
-	/**
-	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-	 * one of the sections/tabs/pages.
-	 */
+	
+	
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
 		public SectionsPagerAdapter(FragmentManager fm) {
@@ -169,5 +150,22 @@ public class TablesActivity extends FragmentActivity implements
 			super.onStop();
 		}
 	}
+
+	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onTabSelected(Tab tab, FragmentTransaction arg1) {
+		mViewPager.setCurrentItem(tab.getPosition());
+		
+	}
+
+	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }
