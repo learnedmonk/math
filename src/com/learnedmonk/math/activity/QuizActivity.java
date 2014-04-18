@@ -1,14 +1,14 @@
-package com.learnedmonk.math;
+package com.learnedmonk.math.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.learnedmonk.math.R;
 import com.learnedmonk.math.db.DB;
 
-public class QuizActivity extends Activity{
+public class QuizActivity extends BaseActivity{
 	
 	private DB db = null;
 	

@@ -1,4 +1,4 @@
-package com.learnedmonk.math;
+package com.learnedmonk.math.activity;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
@@ -15,7 +15,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class MainActivity extends FragmentActivity implements
+import com.learnedmonk.math.R;
+import com.learnedmonk.math.db.DB;
+
+public class TablesActivity extends FragmentActivity implements
 		ActionBar.TabListener {
 
 	/**
@@ -27,19 +30,17 @@ public class MainActivity extends FragmentActivity implements
 	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
-
+	private DB db = null;
 	/**
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	ViewPager mViewPager;
 
-	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		setContentView(R.layout.activity_main);
-
-		// Set up the action bar.
+		db = new DB(getBaseContext());
+		setContentView(R.layout.pagerview_layout);
+	//	setTheme(R.style.TitleBar);
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS );
 
@@ -61,28 +62,19 @@ public class MainActivity extends FragmentActivity implements
 					public void onPageSelected(int position) {
 						
 						actionBar.setSelectedNavigationItem(position);
+						db.setTablePosition(position);
 					}
 				});
 
-		// For each of the sections in the app, add a tab to the action bar.
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
-			// Create a tab with text corresponding to the page title defined by
-			// the adapter. Also specify this Activity object, which implements
-			// the TabListener interface, as the callback (listener) for when
-			// this tab is selected.
 			actionBar.addTab(actionBar.newTab()
-					.setText(mSectionsPagerAdapter.getPageTitle(i))
-					.setTabListener(this));
+				.setText(mSectionsPagerAdapter.getPageTitle(i))
+				.setTabListener(this));
 		}
-		actionBar.setSelectedNavigationItem(15);
+		
+		actionBar.setSelectedNavigationItem(db.getTablePosition());
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
 
 	@Override
 	public void onTabSelected(ActionBar.Tab tab,
@@ -117,75 +109,51 @@ public class MainActivity extends FragmentActivity implements
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a DummySectionFragment (defined as a static inner class
 			// below) with the page number as its lone argument.
-			Fragment fragment = new DummySectionFragment();
+			Fragment fragment = new TableSectionFragment();
 			Bundle args = new Bundle();
-			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
+			args.putInt(TableSectionFragment.ARG_SECTION_NUMBER, position + 1);
 			fragment.setArguments(args);
 			return fragment;
 		}
 
 		@Override
 		public int getCount() {
-			// Show 3 total pages.
 			return 30;
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position) {
-			/*Locale l = Locale.getDefault();
-			switch (position) {
-			case 0:
-				return getString(R.string.title_section1).toUpperCase(l);
-			case 1:
-				return getString(R.string.title_section2).toUpperCase(l);
-			case 2:
-				return getString(R.string.title_section3).toUpperCase(l);
-			default:
-				return "unknown section";
-			}*/
 			position++;
 			return ""+position;
 			
 		}
 	}
 
-	/**
-	 * A dummy fragment representing a section of the app, but that simply
-	 * displays dummy text.
-	 */
-	public static class DummySectionFragment extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
+	public static class TableSectionFragment extends Fragment {
+		
 		public static final String ARG_SECTION_NUMBER = "section_number";
 
-		/*Context c;
-		public DummySectionFragment(Context c) {
-			this.c = c;
-		}*/
-		
 		public int getArgSectionNumber() {
-			return getArguments().getInt(DummySectionFragment.ARG_SECTION_NUMBER)	;
+			return getArguments().getInt(TableSectionFragment.ARG_SECTION_NUMBER)	;
 		}
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main_dummy,
+			View rootView = inflater.inflate(R.layout.table_fragment_layout,
 					container, false);
-			ListView scrollView = (ListView) rootView
+			ListView listView = (ListView) rootView
 					.findViewById(R.id.tablescroll);
 			
 		
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext()
-			, R.layout.table_list);
+			, R.layout.table_listitem_layout);
 			int n = getArgSectionNumber();
 			for(int i =1 ;i<=10;i++){
 				String s = n+"  x "+i+" = "+n*i;
 				adapter.add(s);
 			}
 			
-			scrollView.setAdapter(adapter);
+			listView.setAdapter(adapter);
 		
 			
 			return rootView;

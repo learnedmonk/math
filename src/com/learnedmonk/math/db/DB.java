@@ -11,7 +11,8 @@ public class DB{
 	
 
 	public static enum Fields{
-		LEVEL
+		LEVEL,
+		TABLE_POSITION
 	}	
 	
 	public DB(Context context) {		
@@ -28,4 +29,13 @@ public class DB{
 		ed.commit();
 	}
 	
+	public void setTablePosition(int position){
+		Editor ed = db.edit();
+		ed.putInt(Fields.TABLE_POSITION.name(), position);
+		ed.commit();
+	}
+	
+	public int getTablePosition(){
+		return db.getInt(Fields.TABLE_POSITION.name(), 9);
+	}
 }
