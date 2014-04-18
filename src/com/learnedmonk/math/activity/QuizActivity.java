@@ -15,7 +15,7 @@ public class QuizActivity extends BaseActivity{
 	private TextView screen;
 	
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState,true);
 		
 		
 		db = new DB(getBaseContext());

@@ -11,6 +11,16 @@
         android:layout_height="0dp"
         android:layout_weight="5.0"
         android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:typeface="serif"
+            android:textColor="#ffffff"
+            android:textSize="40sp"
+            android:gravity="center"
+            android:text="Math Practice" >
+</TextView>
     </LinearLayout>
     
    <Button

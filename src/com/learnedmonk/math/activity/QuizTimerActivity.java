@@ -15,7 +15,7 @@ public class QuizTimerActivity extends BaseActivity{
 	
 	public void onCreate(Bundle savedInstanceState) {
 		
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState,true);
 		
 		setContentView(R.layout.quiz_start);
 		

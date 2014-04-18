@@ -13,7 +13,7 @@ public class MainActivity extends BaseActivity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState,true);
 		setContentView(R.layout.main_layout);
 		
 	}
