@@ -1,6 +1,8 @@
 package com.learnedmonk.math.activity;
 
 
+import java.util.zip.Inflater;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.learnedmonk.math.R;
 import com.learnedmonk.math.db.DB;
@@ -36,20 +39,33 @@ public class TablesActivity extends ActionBarActivity implements
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	ViewPager mViewPager;
+	
 
+	private ActionBar getCustomActionBar(){
+		LayoutInflater mInflater = LayoutInflater.from(getBaseContext());
+		ActionBar actionBar = getSupportActionBar();
+		
+		actionBar.setDisplayShowTitleEnabled(false);
+		actionBar.setDisplayUseLogoEnabled(false);
+		actionBar.setDisplayShowHomeEnabled(false);
+		actionBar.setDisplayShowCustomEnabled(true);
+		View rootView = mInflater.inflate(R.layout.actionbar, null); 	
+		TextView view = (TextView) rootView.findViewById(R.id.actionBar);
+		view.setText("Multiplication Tables");
+		
+		actionBar.setCustomView(view);
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS );
+		return actionBar;
+	}
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		db = new DB(getBaseContext());
+	
 		setContentView(R.layout.pagerview_layout);
-		final ActionBar actionBar = getSupportActionBar();
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS );
-		
-		// Create the adapter that will return a fragment for each of the three
-		// primary sections of the app.
+		final ActionBar actionBar= getCustomActionBar();
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
 				getSupportFragmentManager());
 
-		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
