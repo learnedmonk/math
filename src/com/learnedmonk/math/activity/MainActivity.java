@@ -20,7 +20,7 @@ public class MainActivity extends BaseActivity {
 	
 	public void practice(View v){
 	//	Intent intent = new Intent(this, TablesActivity.class);
-	//    startActivity(intent);
+	//  startActivity(intent);
 		View _v = findViewById(R.id.practice_tabs);
 		View _lt = findViewById(R.id.level_tabs);
 		_lt.setVisibility(View.GONE);
@@ -32,7 +32,7 @@ public class MainActivity extends BaseActivity {
 	
 	public void quiz(View v){
 	//	Intent intent = new Intent(this, QuizTimerActivity.class);
-	//    startActivity(intent);
+	//  startActivity(intent);
 		View _lt = findViewById(R.id.level_tabs);
 		View _pt = findViewById(R.id.practice_tabs);
 		_pt.setVisibility(View.GONE);
@@ -48,13 +48,21 @@ public class MainActivity extends BaseActivity {
 		if(tag.equals("TAB")){
 			intent = new Intent(this, TablesActivity.class);
 		}else if(tag.equals("SQCUB")){
-			
+			intent = new Intent(this, PowersActivity.class);
 		}
 		if(intent!=null)
 			startActivity(intent);
 	}
 	public void quizAction(View v){
-		//v.getT
+		Intent intent =null;
+		String tag = (String) v.getTag();
+		
+		if(true){
+			intent = new Intent(this, QuizTimerActivity.class);
+			
+		}
+		if(intent!=null)
+			startActivity(intent);
 	}
 	
 	
@@ -68,5 +76,7 @@ public class MainActivity extends BaseActivity {
 			}
 		}, null);
 	}
+	
+	
 
 }

@@ -27,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity 	android:name="com.learnedmonk.math.activity.TablesActivity" android:theme="@style/Theme.AppCompat"/> 
+        <activity 	android:name="com.learnedmonk.math.activity.TablesActivity" android:theme="@style/Theme.AppCompat"/>
+        <activity 	android:name="com.learnedmonk.math.activity.PowersActivity" android:theme="@style/Theme.AppCompat"/> 
         <activity android:name="com.learnedmonk.math.activity.QuizActivity" />
        	<activity android:name="com.learnedmonk.math.activity.QuizTimerActivity"/>
       </application>

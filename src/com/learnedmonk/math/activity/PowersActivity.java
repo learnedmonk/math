@@ -20,7 +20,7 @@ import android.widget.TextView;
 import com.learnedmonk.math.R;
 import com.learnedmonk.math.db.DB;
 
-public class TablesActivity extends ActionBarActivity implements
+public class PowersActivity extends ActionBarActivity implements
 		ActionBar.TabListener {
 
 	/**
@@ -49,7 +49,7 @@ public class TablesActivity extends ActionBarActivity implements
 		actionBar.setDisplayShowCustomEnabled(true);
 		View rootView = mInflater.inflate(R.layout.actionbar, null); 	
 		TextView view = (TextView) rootView.findViewById(R.id.actionBar);
-		view.setText("Multiplication Tables");
+		view.setText("Square and Cubes");
 		
 		actionBar.setCustomView(view);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS );
@@ -79,15 +79,16 @@ public class TablesActivity extends ActionBarActivity implements
 						db.setTablePosition(position);
 					}
 				});
-
-		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
-			
-			actionBar.addTab(actionBar.newTab()
-				.setText(mSectionsPagerAdapter.getPageTitle(i))
-				.setTabListener(this));
-		}
 		
-		actionBar.setSelectedNavigationItem(db.getTablePosition());
+		actionBar.addTab(actionBar.newTab()
+				.setText("Squares")
+				.setTabListener(this));
+		actionBar.addTab(actionBar.newTab()
+				.setText("Cubes")
+				.setTabListener(this));
+
+		
+	//	actionBar.setSelectedNavigationItem(0);
 	}
 
 
@@ -106,21 +107,19 @@ public class TablesActivity extends ActionBarActivity implements
 			// below) with the page number as its lone argument.
 			Fragment fragment = new TableSectionFragment();
 			Bundle args = new Bundle();
-			args.putInt(TableSectionFragment.ARG_SECTION_NUMBER, position + 1);
+			args.putInt(TableSectionFragment.ARG_SECTION_NUMBER, position + 2);
 			fragment.setArguments(args);
 			return fragment;
 		}
 
 		@Override
 		public int getCount() {
-			return 30;
+			return 2;
 		}
 
 		@Override
 		public CharSequence getPageTitle(int position) {
-			position++;
-			return ""+position;
-			
+			return position==0?"Squares":"Cubes";
 		}
 	}
 
@@ -143,8 +142,8 @@ public class TablesActivity extends ActionBarActivity implements
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity().getApplicationContext()
 			, R.layout.table_listitem_layout);
 			int n = getArgSectionNumber();
-			for(int i =1 ;i<=10;i++){
-				String s = n+"  x "+i+" = "+n*i;
+			for(int i =1 ;i<=30;i++){
+				String s = i+"  ^ "+n+" = "+(int)Math.pow(i, n);
 				adapter.add(s);
 			}
 			
