@@ -7,15 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.learnedmonk.math.R;
+import com.learnedmonk.math.db.DB;
 
 
 public class MainActivity extends BaseActivity {
 
-	@Override
+	DB db ;
+	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState,true);
 		setContentView(R.layout.main_layout);
-		
+		db = new DB(getApplicationContext());
 	}
 	
 	public void practice(View v){
@@ -55,12 +57,13 @@ public class MainActivity extends BaseActivity {
 	}
 	public void quizAction(View v){
 		Intent intent =null;
-		String tag = (String) v.getTag();
-		
-		if(true){
+		Integer tag = Integer.parseInt((String) v.getTag());
+		int userLevel = db.getLevel();
+		if(userLevel < tag)
+			showPopupMessage(" Unlock this level by ...");
+		else
 			intent = new Intent(this, QuizTimerActivity.class);
-			
-		}
+		
 		if(intent!=null)
 			startActivity(intent);
 	}

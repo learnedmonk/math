@@ -20,7 +20,7 @@ public class DB{
 	}	
 	
 	public int getLevel(){
-		return db.getInt(Fields.LEVEL.name(), 0);
+		return db.getInt(Fields.LEVEL.name(), 1);
 	}
 	
 	public void updateLevel(int level){
