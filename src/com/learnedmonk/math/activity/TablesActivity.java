@@ -49,7 +49,7 @@ public class TablesActivity extends ActionBarActivity implements
 		actionBar.setDisplayShowCustomEnabled(true);
 		View rootView = mInflater.inflate(R.layout.actionbar, null); 	
 		TextView view = (TextView) rootView.findViewById(R.id.actionBar);
-		view.setText("Multiplication Tables");
+		view.setText(" ");
 		
 		actionBar.setCustomView(view);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS );
@@ -119,7 +119,7 @@ public class TablesActivity extends ActionBarActivity implements
 		@Override
 		public CharSequence getPageTitle(int position) {
 			position++;
-			return ""+position;
+			return "Table for - "+position;
 			
 		}
 	}

@@ -49,7 +49,7 @@ public class PowersActivity extends ActionBarActivity implements
 		actionBar.setDisplayShowCustomEnabled(true);
 		View rootView = mInflater.inflate(R.layout.actionbar, null); 	
 		TextView view = (TextView) rootView.findViewById(R.id.actionBar);
-		view.setText("Square and Cubes");
+		view.setText(" ");
 		
 		actionBar.setCustomView(view);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS );
@@ -153,15 +153,6 @@ public class PowersActivity extends ActionBarActivity implements
 			return rootView;
 		}
 		
-		public void onStart() {
-			// TODO Auto-generated method stub
-			super.onStart();
-		}
-		@Override
-		public void onStop() {
-			// TODO Auto-generated method stub
-			super.onStop();
-		}
 	}
 
 	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {

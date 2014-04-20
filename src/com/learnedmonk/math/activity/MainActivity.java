@@ -68,8 +68,20 @@ public class MainActivity extends BaseActivity {
 			startActivity(intent);
 	}
 	
+	public void myscores(View v){
+		Intent intent = new Intent(this, ScoresActivity.class);
+		startActivity(intent);
+	}
 	
-	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		View _lt = findViewById(R.id.level_tabs);
+		View _pt = findViewById(R.id.practice_tabs);
+		_lt.setVisibility(View.GONE);
+		_pt.setVisibility(View.GONE);
+	}
 	public void onBackPressed() {
 		showConfirmBox("Do you want to Exit", " Please Confirm", new OnClickListener() {
 			

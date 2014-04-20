@@ -30,7 +30,8 @@
         <activity 	android:name="com.learnedmonk.math.activity.TablesActivity" android:theme="@style/Theme.AppCompat"/>
         <activity 	android:name="com.learnedmonk.math.activity.PowersActivity" android:theme="@style/Theme.AppCompat"/> 
         <activity android:name="com.learnedmonk.math.activity.QuizActivity" />
-       	<activity android:name="com.learnedmonk.math.activity.QuizTimerActivity"/>
+        <activity android:name="com.learnedmonk.math.activity.ScoresActivity" />
+       	<activity android:name="com.learnedmonk.math.activity.QuizTimerActivity" android:noHistory="true"/>
       </application>
 
 </manifest>

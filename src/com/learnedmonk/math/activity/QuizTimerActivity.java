@@ -14,9 +14,9 @@ public class QuizTimerActivity extends BaseActivity{
 	
 	
 	public void onCreate(Bundle savedInstanceState) {
-		
 		super.onCreate(savedInstanceState,true);
-		
+		Intent intent = getIntent();
+		final int level = intent.getIntExtra("Level", 1);
 		setContentView(R.layout.quiz_start);
 		
 		self = this;
@@ -26,16 +26,23 @@ public class QuizTimerActivity extends BaseActivity{
 		new CountDownTimer(4000, 1000) {
 
 		     public void onTick(long millisUntilFinished) {
-		    	 timerText.setText(""+(millisUntilFinished / 1000));
+		    	
+		    		 timerText.setText(""+(millisUntilFinished/1000 ));
 		     }
-
+		     
 		     public void onFinish() {
 		    	 Intent intent = new Intent(self, QuizActivity.class);
+		    	 intent.putExtra("Level", level);
 		    	 startActivity(intent);
 		     }
 		  }.start();
 		
 	}
 
+	@Override
+	public void onBackPressed() {
+		// do nothing..
+		
+	}
 
 }

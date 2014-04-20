@@ -1,5 +1,6 @@
 package com.learnedmonk.math.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +17,8 @@ public class QuizActivity extends BaseActivity{
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState,true);
-		
+		Intent intent = getIntent();
+		int level = intent.getIntExtra("Level", 1);
 		
 		db = new DB(getBaseContext());
 		
