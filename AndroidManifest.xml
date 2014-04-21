@@ -9,6 +9,8 @@
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="18" />
+    
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         
@@ -28,6 +30,8 @@
         <activity android:name="com.learnedmonk.math.activity.TablesActivity" /> 
         <activity android:name="com.learnedmonk.math.activity.QuizActivity" />
        	<activity android:name="com.learnedmonk.math.activity.QuizTimerActivity"/>
+       
       </application>
+      
 
 </manifest>

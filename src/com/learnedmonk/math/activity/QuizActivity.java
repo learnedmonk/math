@@ -1,10 +1,16 @@
 package com.learnedmonk.math.activity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.learnedmonk.math.Dao;
+import com.learnedmonk.math.Dao.Q;
 import com.learnedmonk.math.R;
 import com.learnedmonk.math.db.DB;
 
@@ -12,7 +18,10 @@ public class QuizActivity extends BaseActivity{
 	
 	private DB db = null;
 	
-	private TextView screen;
+	private TextView screen,question;
+	Q[] qs = null;
+	int idx = 0;
+	double ts;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -20,18 +29,16 @@ public class QuizActivity extends BaseActivity{
 		
 		db = new DB(getBaseContext());
 		
-		if ( db.getLevel() == 0 ){
-			
-			setContentView(R.layout.quiz_on);
-			screen = (TextView) findViewById(R.id.screen);
-			
-		}else{
-			/* show levels list view TODO*/
-			
-			setContentView(R.layout.quiz_on);
-			screen = (TextView) findViewById(R.id.screen);
-			
-		}
+		setContentView(R.layout.quiz_on);
+		screen = (TextView) findViewById(R.id.screen);
+		question = (TextView) findViewById(R.id.question);
+		
+		//TODO implement levels
+		
+		qs = Dao.generate(0, 10);
+		question.setText(qs[idx].exp);
+		ts = System.currentTimeMillis();
+		
 		
 	}
 	
@@ -47,7 +54,32 @@ public class QuizActivity extends BaseActivity{
 			
 		}else{
 			int id = Integer.parseInt(b.getText().toString());
-			screen.setText(screen.getText().toString()+id);
+			String val = screen.getText().toString()+id;
+			screen.setText(val);
+			
+			if (!(qs[idx].val+"").startsWith(val)){
+				Vibrator v = (Vibrator) getBaseContext().getSystemService(Context.VIBRATOR_SERVICE);
+				 // Vibrate for 200 milliseconds
+				 v.vibrate(200);
+				 
+				Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+				screen.startAnimation(shake);
+				
+			}else{
+				if (Integer.parseInt(val) == qs[idx].val){
+					screen.setText("");
+					idx++;
+					if ( idx == qs.length){
+						// all done.
+						question.setText("time: "+(System.currentTimeMillis() - ts)+" ms");
+					}else{
+						// next question
+						question.setText(qs[idx].exp);
+						
+					}
+				}
+			}
+			
 		}
 		
 	}
