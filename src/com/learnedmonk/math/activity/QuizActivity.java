@@ -37,8 +37,19 @@ public class QuizActivity extends BaseActivity{
 	
 	public void onClick(View view){
 		Button b = (Button)view;
-		int id = Integer.parseInt(b.getText().toString());
-		screen.setText(screen.getText().toString()+id);
+		String txt = b.getText().toString();
+		if ("DEL".equals(txt)){
+			String cur = screen.getText().toString();
+			int len = cur.length();
+			if ( len > 0 ){
+				screen.setText(cur.substring(0, len-1));
+			}
+			
+		}else{
+			int id = Integer.parseInt(b.getText().toString());
+			screen.setText(screen.getText().toString()+id);
+		}
+		
 	}
 
 }
