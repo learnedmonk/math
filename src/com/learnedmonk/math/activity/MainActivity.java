@@ -22,7 +22,7 @@ public class MainActivity extends BaseActivity {
 	}
 	
 	public void quiz(View v){
-		Intent intent = new Intent(this, QuizTimerActivity.class);
+		Intent intent = new Intent(this, QuizActivity.class);
 	    startActivity(intent);
 	}
 
