@@ -54,12 +54,17 @@
 		     android:onClick="onClick"
 		    />
 		<Button android:text="0"
-		    android:layout_columnSpan="2"
+		    
 		    android:onClick="onClick"
 		     />
-		<Button android:text="DEL" 
-		     android:onClick="onClick"
-		    />
+
+		<Button
+		    android:layout_width="wrap_content"
+		    android:layout_columnSpan="2"
+		    android:layout_gravity="fill_horizontal"
+		    android:onClick="onClick"
+		    android:text="DEL" />
+
 	</GridLayout>
 
 </LinearLayout>
