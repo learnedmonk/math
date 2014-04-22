@@ -55,6 +55,7 @@ public class QuizActivity extends FragmentActivity{
 			question = (TextView) out.findViewById(R.id.question);
 			
 			qs = Dao.generate(0, 10);
+			idx = 0;
 			question.setText(qs[idx].exp);
 			ts = System.currentTimeMillis();
 	       
