@@ -28,125 +28,38 @@
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="281dp" >
-
-        <Button
-            android:id="@+id/b5"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignBaseline="@+id/b4"
-            android:layout_alignBottom="@+id/b4"
-            android:layout_alignLeft="@+id/b2"
-            android:background="@drawable/roundbutton"
-            android:onClick="onClick"
-            android:text="5" />
-
-        <Button
-            android:id="@+id/b6"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignBaseline="@+id/b5"
-            android:layout_alignBottom="@+id/b5"
-            android:layout_alignLeft="@+id/b3"
-            android:background="@drawable/roundbutton"
-            android:onClick="onClick"
-            android:text="6" />
-
-        <Button
-            android:id="@+id/b2"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignBaseline="@+id/b3"
-            android:layout_alignBottom="@+id/b3"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/roundbutton"
-            android:onClick="onClick"
-            android:text="2" />
-
-        <Button
-            android:id="@+id/b1"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/b4"
-            android:layout_alignParentLeft="true"
-            android:background="@drawable/roundbutton"
-            android:onClick="onClick"
-            android:layout_marginLeft="40dp"
-            android:text="1" />
-
-        <Button
-            android:id="@+id/b3"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/b6"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/roundbutton"
-            android:onClick="onClick"
-             android:layout_marginRight="40dp"
-            android:text="3" />
-
-        <Button
-            android:id="@+id/b4"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/b7"
-            android:layout_alignLeft="@+id/b1"
-            android:background="@drawable/roundbutton"
-            android:onClick="onClick"
-            android:text="4" />
-
-        <Button
-            android:id="@+id/back"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignRight="@+id/b9"
-            android:layout_below="@+id/b8"
-            android:background="@drawable/roundbutton"
-            android:onClick="onClick"
-            android:text="DEL" />
-
-        <Button
-            android:id="@+id/b7"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/b0"
-            android:layout_alignLeft="@+id/b4"
-            android:background="@drawable/roundbutton"
-            android:onClick="onClick"
-            android:text="7" />
-
-        <Button
-            android:id="@+id/b9"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignLeft="@+id/b6"
-            android:layout_below="@+id/b6"
-            android:background="@drawable/roundbutton"
-            android:onClick="onClick"
-            android:text="9" />
-
-        <Button
-            android:id="@+id/b8"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/b0"
-            android:layout_alignLeft="@+id/b5"
-            android:background="@drawable/roundbutton"
-            android:onClick="onClick"
-            android:text="8" />
-
-        <Button
-            android:id="@+id/b0"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignLeft="@+id/b7"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/roundbutton"
-            android:onClick="onClick"
-            android:text="0" />
-
-    </RelativeLayout>
+    <GridLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:columnCount="3"
+    android:orientation="horizontal" >
+        <Button android:text="1" 
+             android:onClick="onClick"/>
+		<Button android:text="2" 
+		     android:onClick="onClick"/>
+		<Button android:text="3" 
+		     android:onClick="onClick"/>
+		<Button android:text="4" 
+		     android:onClick="onClick"/>
+		<Button android:text="5" 
+		     android:onClick="onClick"/>
+		<Button android:text="6" 
+		     android:onClick="onClick"/>
+		<Button android:text="7" 
+		     android:onClick="onClick"/>
+		<Button android:text="8" 
+		     android:onClick="onClick"/>
+		<Button android:text="9" 
+		     android:onClick="onClick"
+		    />
+		<Button android:text="0"
+		    android:layout_columnSpan="2"
+		    android:onClick="onClick"
+		     />
+		<Button android:text="DEL" 
+		     android:onClick="onClick"
+		    />
+	</GridLayout>
 
 </LinearLayout>
